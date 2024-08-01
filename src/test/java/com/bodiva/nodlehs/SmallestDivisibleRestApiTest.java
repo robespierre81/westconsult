@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(SmallestDivisible.class)
-public class SmallestDivisibleTest {
+public class SmallestDivisibleRestApiTest {
     @Autowired
     private MockMvc mockMvc;
 

@@ -1,36 +1,35 @@
 package com.bodiva.nodlehs;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-@WebMvcTest(SmallestDivisible.class)
 public class SmallestDivisibleTest {
-    @Autowired
-    private MockMvc mockMvc;
+    
+    private final SmallestDivisible smallestDivisible = new SmallestDivisible();
 
     @Test
-    public void testGetSmallestDivisibleApi() throws Exception {
-         ResultActions resultActions = mockMvc.perform(get("/api/smallest-divisible"))
-                .andExpect(status().isOk()) // Assert that the status is 200 OK
-                .andExpect(content().string("26771144400")); // Assert that the content matches the expected value
+    public void testFindSmallestNumberDivisibleByAllBasic() {
+        assertEquals(2520, smallestDivisible.findSmallestNumberDivisibleByAll(10));
+        assertEquals(360360, smallestDivisible.findSmallestNumberDivisibleByAll(15));
+    }
 
+    @Test
+    public void testFindSmallestNumberDivisibleByAllZero() {
+        assertEquals(1, smallestDivisible.findSmallestNumberDivisibleByAll(0));
     }
-    
-    @Test 
-    public void testGetSmallestDivisibleValue() {
-        SmallestDivisible controller = new SmallestDivisible();
-       
-        long expected = 26771144400L;
-        long actual = controller.findSmallestNumberDivisibleByAll(25);
-        assertEquals(expected, actual, "The smallest number divisible by all numbers from 1 to 25 should be 26771144400.");
+
+    @Test
+    public void testFindSmallestNumberDivisibleByAllOne() {
+        assertEquals(1, smallestDivisible.findSmallestNumberDivisibleByAll(1));
     }
-    
+
+    @Test
+    public void testFindSmallestNumberDivisibleByAllLarge() {
+        assertEquals(26771144400L, smallestDivisible.findSmallestNumberDivisibleByAll(25));
+    }
+
+    @Test
+    public void testFindSmallestNumberDivisibleByAllNegative() {
+        assertEquals(1, smallestDivisible.findSmallestNumberDivisibleByAll(-5));
+    }
 }
