@@ -8,7 +8,7 @@ import org.springframework.core.env.AbstractEnvironment;
 public class Nodlehs {
 
     public static void main(String[] args) {
-        System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "default-profile");
-        SpringApplication.run(SmallestDivisible.class, args);
+        //System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "default-profile");
+        SpringApplication.run(Nodlehs.class, args);
     }
 }

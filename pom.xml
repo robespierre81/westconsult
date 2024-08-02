@@ -5,7 +5,21 @@
     <artifactId>Nodlehs</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+    
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
@@ -106,6 +120,15 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>com.bodiva.nodlehs.Nodlehs</exec.mainClass>
     </properties>
-    <build>
-    </build>
+   <build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.bodiva.nodlehs.Nodlehs</mainClass> 
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
