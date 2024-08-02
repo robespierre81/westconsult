@@ -38,4 +38,22 @@ public class ServletWebServerFactoryAutoConfiguration__BeanDefinitions {
     beanDefinition.setInstanceSupplier(getServletWebServerFactoryCustomizerInstanceSupplier());
     return beanDefinition;
   }
+
+  /**
+   * Get the bean instance supplier for 'tomcatServletWebServerFactoryCustomizer'.
+   */
+  private static BeanInstanceSupplier<TomcatServletWebServerFactoryCustomizer> getTomcatServletWebServerFactoryCustomizerInstanceSupplier(
+      ) {
+    return BeanInstanceSupplier.<TomcatServletWebServerFactoryCustomizer>forFactoryMethod(ServletWebServerFactoryAutoConfiguration.class, "tomcatServletWebServerFactoryCustomizer", ServerProperties.class)
+            .withGenerator((registeredBean, args) -> registeredBean.getBeanFactory().getBean(ServletWebServerFactoryAutoConfiguration.class).tomcatServletWebServerFactoryCustomizer(args.get(0)));
+  }
+
+  /**
+   * Get the bean definition for 'tomcatServletWebServerFactoryCustomizer'.
+   */
+  public static BeanDefinition getTomcatServletWebServerFactoryCustomizerBeanDefinition() {
+    RootBeanDefinition beanDefinition = new RootBeanDefinition(TomcatServletWebServerFactoryCustomizer.class);
+    beanDefinition.setInstanceSupplier(getTomcatServletWebServerFactoryCustomizerInstanceSupplier());
+    return beanDefinition;
+  }
 }

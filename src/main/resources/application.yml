@@ -1,3 +1,5 @@
 spring:
   profiles:
     active: default-profile
+  server:
+    port: 8081
